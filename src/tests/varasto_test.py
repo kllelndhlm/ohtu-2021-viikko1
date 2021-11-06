@@ -4,7 +4,8 @@ from varasto import Varasto
 
 class TestVarasto(unittest.TestCase):
     def setUp(self):
-        self.varasto = Varasto(10)
+        self.varasto = Varasto(10, -1)
+        self.varasto = Varasto(10, 0)
 
 #    def test_konstruktori_luo_tyhjan_varaston(self):
  #       # https://docs.python.org/3/library/unittest.html#unittest.TestCase.assertAlmostEqual
@@ -44,9 +45,9 @@ class TestVarasto(unittest.TestCase):
         # varastossa pitäisi olla tilaa 10 - 8 + 2 eli 4
         self.assertAlmostEqual(self.varasto.paljonko_mahtuu(), 4)
 
-#    def test_varastosta_otetaan_liian_vahan(self):
- #       self.varasto.ota_varastosta(-1)
-  #      self.assertAlmostEqual(self.varasto.saldo, 0)
+    def test_varastosta_otetaan_liian_vahan(self):
+        self.varasto.ota_varastosta(-1)
+        self.assertAlmostEqual(self.varasto.saldo, 0)
 
 #    def test_varastosta_otetaan_liikaa(self):
  #       self.varasto.ota_varastosta(11)
