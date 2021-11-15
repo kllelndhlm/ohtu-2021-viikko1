@@ -1,5 +1,5 @@
 class Varasto:
-    def __init__(self, tilavuus = 0, alku_saldo = 0):
+    def __init__(self, tilavuus=0, alku_saldo=0):
         self.saldo = alku_saldo
         self.tilavuus = tilavuus
 
