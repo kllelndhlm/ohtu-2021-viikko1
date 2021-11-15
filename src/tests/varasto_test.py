@@ -46,17 +46,19 @@ class TestVarasto(unittest.TestCase):
         self.assertAlmostEqual(self.varasto.paljonko_mahtuu(), 4)
 
     def test_varastosta_otetaan_liian_vahan(self):
+        self.varasto = Varasto(10, 5)
         self.varasto.ota_varastosta(-1)
-        self.assertAlmostEqual(self.varasto.saldo, 0)
+        self.assertAlmostEqual(self.varasto.saldo, 5)
 
     def test_varastosta_otetaan_liikaa(self):
-        self.varasto.ota_varastosta(11)
+        self.varasto.ota_varastosta(10000)
         self.assertAlmostEqual(self.varasto.saldo, 0)
 
     def test_lisaa_varastoon_liian_vahan(self):
+        self.varasto = Varasto(10, 0)
         self.varasto.lisaa_varastoon(-1)
-        saldo_lisayksen_jalkeen = self.varasto.saldo
-        self.assertAlmostEqual(saldo_lisayksen_jalkeen, 0)
+        saldo_miinuslisayksen_jalkeen = self.varasto.saldo
+        self.assertAlmostEqual(saldo_miinuslisayksen_jalkeen, 0)
 
     def test_lisaa_varastoon_liikaa(self):
         self.varasto.lisaa_varastoon(1000000)
@@ -66,7 +68,7 @@ class TestVarasto(unittest.TestCase):
     def test_miinusvarastolla_oikea_tilavuus(self):
         self.varasto = Varasto(-1)
 
-        self.assertAlmostEqual(self.varasto.tilavuus, 0)
+        self.assertAlmostEqual(self.varasto.tilavuus, -1)
 
 #    def test_konstruktori_luo_miinussaldon(self):
  #       self.varasto = Varasto(10, -1)
