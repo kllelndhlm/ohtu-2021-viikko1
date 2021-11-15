@@ -28,4 +28,4 @@ jobs:
         run: bash <(curl -s https://codecov.io/bash)
 
       - name: lint
-        run: poetry pylint src
+        run: poetry run pylint src
